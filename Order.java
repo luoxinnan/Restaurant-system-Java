@@ -96,5 +96,17 @@ class Order{
     }
 
 
+    @Override
+    public String toString() {
+        return "{" +
+            " number='" + getNumber() + "'" +
+            ", status='" + getStatus() + "'" +
+            ", foods='" + getFoods() + "'" +
+            ", type='" + getType() + "'" +
+            ", paid='" + isPaid() + "'" +
+            ", totalPrice='" + getTotalPrice() + "'" +
+            "}";
+    }
+
 
 }

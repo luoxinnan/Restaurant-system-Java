@@ -9,11 +9,12 @@ public class test {
         Order order = new Order(foods, "Take away");
 
         HashMap<String, Double> foods2 = new HashMap<>();
-        foods.put("Chicken legs", 189.0);
-        Order order2 = new Order(foods2, "Dine in");
+        foods2.put("Legs", 179.0);
+        Order order2 = new Order(foods2, "Take away");
 
         OrderSystem orderSystem = new OrderSystem();
-        orderSystem.addOrder(order);
         orderSystem.addOrder(order2);
+        orderSystem.addOrder(order);
+
     }
 }
