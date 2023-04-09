@@ -1,5 +1,5 @@
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 
 public class OrderSystem {
     private ArrayList<Order> orders = new ArrayList<>();
@@ -19,7 +19,7 @@ public class OrderSystem {
     public void addToOrderLog(Order order){
         PrintWriter f = null;
         try{
-            f = new PrintWriter("orderLog");
+            f = new PrintWriter("orderLog.csv");
         }catch(Exception e){
             System.err.println("Failed adding order to log");
             System.exit(1);
@@ -30,6 +30,11 @@ public class OrderSystem {
             foods = foods + foodName + " ";
         }
         String line = order.getNumber() + "," + order.getType() + "," + order.getTotalPrice() + "," + foods;
+        System.out.println(line);
         f.write(line);
+        f.println();
+        f.close();
+
+        
     }
 }
