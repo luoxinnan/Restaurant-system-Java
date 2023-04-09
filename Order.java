@@ -2,12 +2,13 @@ import java.io.*;
 import java.util.*;
 
 class Order{
-    private String status; // order taken/made/packed/delivered
+    private int number;
+    private String status; // order taken/cooked/packed
     private HashMap<String, Double> foods = new HashMap<>(); // foods the order contains
     private String type; // takeaway/dine in
     private boolean paid = false; 
     private double totalPrice;
-    private int number;
+
 
     public Order(HashMap<String, Double> foods, String type){
         this.foods = foods;
