@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 public class Menu {
     HashMap<String, HashMap<String, Double>> menu = new HashMap<>(); // in a format of: {category: {dish name: price}}
+    HashMap<String, Double> chickens = new HashMap<>();
+    HashMap<String, Double> snacks = new HashMap<>();
+    HashMap<String, Double> sauces = new HashMap<>();
+    HashMap<String, Double> softDrinks = new HashMap<>();
 
     public Menu(String fileName){
         readFile(fileName);
@@ -34,6 +38,10 @@ public class Menu {
                     Double price = Double.parseDouble(bits[1]);
                     map.put(dish, price);
                 }
+                if(category.equals("Chicken")) chickens= map;
+                else if(category.equals("Snacks")) snacks = map;
+                else if(category.equals("Sauce")) sauces = map;
+                else if(category.equals("Soft drink")) softDrinks = map;
                 menu.put(category, map);
             } 
         }
