@@ -1,11 +1,14 @@
 import java.util.*;
 
 public class ServiceMain {
+    static final String menuFile = "menu.csv";
+    static final String orderLog = "orderLog.csv";
+
     static boolean exit = false;
     static Scanner scan = new Scanner(System.in);
     static OrderSystem orderSystem = new OrderSystem();
     static RestaurantMonitor monitor = new RestaurantMonitor(orderSystem);
-    static Menu menu = new Menu("menu.csv");
+    static Menu menu = new Menu(menuFile);
     public static void main(String[] args) {
         ArrayList<Order> orders = new ArrayList<>();
 
@@ -17,12 +20,16 @@ public class ServiceMain {
             switch (prompt){
                 case "1": startOrdering(orders); break;
                 case "2": pickUp(orders); break;
-                case "3": System.out.println("Administration"); break;
+                case "3": checkInfo(); break;
                 case "4": System.exit(0);
                 default: ;
             }
         }
     
+    }
+
+    public static void checkInfo(){
+
     }
 
     public static void pickUp(ArrayList<Order> orders){
