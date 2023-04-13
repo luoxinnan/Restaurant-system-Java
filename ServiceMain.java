@@ -29,6 +29,7 @@ public class ServiceMain {
     
     }
 
+    // Print out all the information in the entire order log
     public static void checkInfo(){
         System.out.println("Informations of orders: ");
 
@@ -46,6 +47,7 @@ public class ServiceMain {
         scanner.close();
     }
 
+    // pick up order by order number
     public static void pickUp(ArrayList<Order> orders){
         System.out.println("\nPlease enter you order number: ");
         String orderNumber = scan.nextLine();
@@ -61,8 +63,10 @@ public class ServiceMain {
         return;
     }
 
-    public static void startOrdering(ArrayList<Order> orders){
 
+    // Take orders, add orders into a list, then send inn all these orders through SendInOrder threads
+    // Packing orders by deliverOrder thread
+    public static void startOrdering(ArrayList<Order> orders){
 
         while(true){
             Order order = takeOrder();
@@ -99,6 +103,7 @@ public class ServiceMain {
 
     }
 
+    // Make order, print out the order number and return the order object
     public static Order takeOrder(){
         System.out.println("\nTo dine in press 1, for takeout press 2: ");
         String orderType = "";
@@ -115,12 +120,8 @@ public class ServiceMain {
 
     }
 
-    // public static boolean pay(){
-    //     System.out.println("Are you paying now? y for yes, other input for no");
-    //     if(scan.nextLine().toLowerCase().equals("y")) return true;
-    //     return false;
-    // }
 
+    // Select the food from the menu ny entering the corresponding number. Then return the hash map of the selected food(in the format of food name: price).
     public static HashMap<String, Double> chooseFood(){
 
         System.out.println("\nHere is the menu: ");
