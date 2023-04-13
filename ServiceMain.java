@@ -5,25 +5,43 @@ public class ServiceMain {
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
         
+        OrderSystem orderSystem = new OrderSystem();
         Menu menu = new Menu("menu.csv");
         System.out.println("\nWelcome to 175C Korean Fried Chicken!");
-        System.out.println("\nAre you intending to dine in or opt for takeout?");
+        ArrayList<Order> orders = new ArrayList<>();
 
+        while(true){
+            orders.add(takeOrder(menu));
+            System.out.println("Do you want to take one more order? y for yes");
+            if(!scan.nextLine().toLowerCase().equals("y")) break;
+        }
+    
+        System.out.println("We are preparing your food, please be pasient...");
+
+
+ 
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+
+    public static Order takeOrder(Menu menu){
+        System.out.println("\nAre you intending to dine in or opt for takeout?");
         String orderType = scan.nextLine();
-        HashMap<String, Double> foods = takeOrder(menu);
+        HashMap<String, Double> foods = orderFood(menu);
         Order order = new Order(foods, orderType);
         order.setPaid(pay());
-        System.out.println(order);
+        return order;
 
-
-    
-    
-    
-    
-    
-    
-    
-    
     }
 
     public static boolean pay(){
@@ -33,7 +51,7 @@ public class ServiceMain {
 
     }
 
-    public static HashMap<String, Double> takeOrder(Menu menu){
+    public static HashMap<String, Double> orderFood(Menu menu){
 
         System.out.println("\nHere is the menu: ");
         System.out.println(menu);
@@ -61,7 +79,7 @@ public class ServiceMain {
             System.out.println("\nPress y to confirm, press n to restart, press e to exit system");
             String confirm = scan.nextLine().toLowerCase();
             if(confirm.equals("y")) return foods;
-            if(confirm.equals("n")) ;
+            if(confirm.equals("n")) orderFood(menu);
             else if(confirm.equals("e")) System.exit(0);
             else ;
         }
