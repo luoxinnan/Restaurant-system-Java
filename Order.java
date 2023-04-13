@@ -4,7 +4,7 @@ import java.util.*;
 class Order{
     private int number;
     private String status; // order taken/cooked/packed
-    private HashMap<String, Double> foods = new HashMap<>(); // foods the order contains
+    private HashMap<String, Double> foods = new LinkedHashMap<>(); // foods the order contains
     private String type; // takeaway/dine in
     private boolean paid = false; 
     private double totalPrice;

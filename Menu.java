@@ -1,14 +1,15 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class Menu {
-    HashMap<String, HashMap<String, Double>> menu = new HashMap<>(); // in a format of: {category: {dish name: price}}
-    HashMap<String, Double> chickens = new HashMap<>();
-    HashMap<String, Double> snacks = new HashMap<>();
-    HashMap<String, Double> sauces = new HashMap<>();
-    HashMap<String, Double> softDrinks = new HashMap<>();
+    HashMap<String, HashMap<String, Double>> menu = new LinkedHashMap<>(); // in a format of: {category: {dish name: price}}
+    HashMap<String, Double> chickens = new LinkedHashMap<>();
+    HashMap<String, Double> snacks = new LinkedHashMap<>();
+    HashMap<String, Double> sauces = new LinkedHashMap<>();
+    HashMap<String, Double> softDrinks = new LinkedHashMap<>();
 
     public Menu(String fileName){
         readFile(fileName);
@@ -26,15 +27,17 @@ public class Menu {
 
         String category = "";
         String line = scan.nextLine();
+        int number = 0;
         while(scan.hasNextLine()){
             if(line.contains("#")){
                 category = line.substring(1);
-                HashMap<String, Double> map = new HashMap<>(); // dish name, price
+                HashMap<String, Double> map = new LinkedHashMap<>(); // dish name, price
                 while(scan.hasNextLine()){
                     line = scan.nextLine();
                     if(line.contains("#")) break;
                     String[] bits = line.split(",");
-                    String dish = bits[0];
+                    String dish = number +  " " + bits[0];
+                    number ++;
                     Double price = Double.parseDouble(bits[1]);
                     map.put(dish, price);
                 }
