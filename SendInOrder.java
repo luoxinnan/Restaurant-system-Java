@@ -1,9 +1,9 @@
-public class SendInOrderThread implements Runnable{
+public class SendInOrder implements Runnable{
     
     RestaurantMonitor monitor;
     Order order;
     
-    private SendInOrderThread(Order order, RestaurantMonitor monitor){
+    SendInOrder(Order order, RestaurantMonitor monitor){
         this.monitor = monitor;
         this.order = order;
     }

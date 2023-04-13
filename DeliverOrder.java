@@ -1,13 +1,14 @@
-public class DeliverOrderThread implements Runnable{
+public class DeliverOrder implements Runnable{
     RestaurantMonitor monitor;
     
-    private DeliverOrderThread(RestaurantMonitor monitor){
+    DeliverOrder(RestaurantMonitor monitor){
         this.monitor = monitor;
     }
 
     @Override
     public void run(){
         try{
+            Thread.sleep(5000);
             monitor.packOrders();
             System.out.println("Finished packing");
         }catch(InterruptedException e){

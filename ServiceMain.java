@@ -6,9 +6,11 @@ public class ServiceMain {
     public static void main(String[] args) {
         
         OrderSystem orderSystem = new OrderSystem();
+        RestaurantMonitor monitor = new RestaurantMonitor(orderSystem);
         Menu menu = new Menu("menu.csv");
         System.out.println("\nWelcome to 175C Korean Fried Chicken!");
         ArrayList<Order> orders = new ArrayList<>();
+        
 
         while(true){
             orders.add(takeOrder(menu));
@@ -17,6 +19,30 @@ public class ServiceMain {
         }
     
         System.out.println("We are preparing your food, please be pasient...");
+        DeliverOrder deliver = new DeliverOrder(monitor);
+        Thread deliverThread = new Thread(deliver);
+        deliverThread.start();
+        Thread[] sengInnthreads = new Thread[orders.size()];
+        for(int i=0; i < orders.size(); i++){
+            SendInOrder sendIn = new SendInOrder( orders.get(i), monitor);
+            Thread thread = new Thread(sendIn);
+            sengInnthreads[i] = thread;
+            thread.start();
+        }
+
+        try{
+            for(int i=0; i<sengInnthreads.length; i++){
+                sengInnthreads[i].join();
+            }
+            deliverThread.join();
+        }catch(Exception e){
+            System.err.println(e);
+            System.exit(1);
+        }
+
+        System.out.println("All orders finished paking");
+
+
 
 
  
