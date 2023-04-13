@@ -12,7 +12,7 @@ public class SendInOrder implements Runnable{
     public void run(){
         try{
             monitor.workOnOrders(order);
-            System.out.println("Finished Sending");
+            System.out.println("Finished Sending in order");
         }catch(InterruptedException e){
             System.err.println(e);
             System.exit(1);
