@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 public class ServiceMain {
@@ -29,7 +30,20 @@ public class ServiceMain {
     }
 
     public static void checkInfo(){
+        System.out.println("Informations of orders: ");
 
+        Scanner scanner = null;
+        try{
+            scanner = new Scanner(new File(orderLog));
+        } catch(FileNotFoundException e){
+            System.out.println(e);
+            System.exit(1);
+        }
+
+        while(scanner.hasNextLine()){
+            System.out.println(scanner.nextLine());
+        }
+        scanner.close();
     }
 
     public static void pickUp(ArrayList<Order> orders){
@@ -86,8 +100,12 @@ public class ServiceMain {
     }
 
     public static Order takeOrder(){
-        System.out.println("\nAre you intending to dine in or opt for takeout?");
-        String orderType = scan.nextLine();
+        System.out.println("\nTo dine in press 1, for takeout press 2: ");
+        String orderType = "";
+        String answer = scan.nextLine();
+        if(answer.equals("1")) orderType = "Dine in";
+        else if(answer.equals("2")) orderType = "Takeout";
+        else takeOrder();
         HashMap<String, Double> foods = chooseFood();
         if(foods == null) return null;
         Order order = new Order(foods, orderType);
@@ -128,7 +146,7 @@ public class ServiceMain {
 
         System.out.println("\nHere is food you have orderd.");
         System.out.println(foods.toString());
-        System.out.println("\nPress y to confirm, press other key to restart");
+        System.out.println("\nTo confirm press y, press restart press other keys");
         String confirm = scan.nextLine().toLowerCase();
         if(confirm.equals("y")) return foods;
         else return null;
