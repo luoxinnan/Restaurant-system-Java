@@ -3,17 +3,53 @@ import java.util.*;
 public class ServiceMain {
     static boolean exit = false;
     static Scanner scan = new Scanner(System.in);
+    static OrderSystem orderSystem = new OrderSystem();
+    static RestaurantMonitor monitor = new RestaurantMonitor(orderSystem);
+    static Menu menu = new Menu("menu.csv");
     public static void main(String[] args) {
         
-        OrderSystem orderSystem = new OrderSystem();
-        RestaurantMonitor monitor = new RestaurantMonitor(orderSystem);
-        Menu menu = new Menu("menu.csv");
+
         System.out.println("\nWelcome to 175C Korean Fried Chicken!");
-        ArrayList<Order> orders = new ArrayList<>();
-        
 
         while(true){
-            orders.add(takeOrder(menu));
+            System.out.println("\nOrder food press 1, pick up food press 2, administration press 3, exit press 4");
+            String prompt = scan.nextLine();
+            switch (prompt){
+                case "1": startOrdering(); break;
+                case "2": System.out.println("pick up"); break;
+                case "3": System.out.println("Administration"); break;
+                case "4": System.exit(0);
+                default: ;
+            }
+        }
+       
+
+        
+
+
+
+
+
+ 
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+
+    public static void startOrdering(){
+        ArrayList<Order> orders = new ArrayList<>();
+
+        while(true){
+            orders.add(takeOrder());
             System.out.println("Do you want to take one more order? y for yes");
             if(!scan.nextLine().toLowerCase().equals("y")) break;
         }
@@ -43,27 +79,12 @@ public class ServiceMain {
         System.out.println("All orders finished paking");
 
 
-
-
- 
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
     }
 
-    public static Order takeOrder(Menu menu){
+    public static Order takeOrder(){
         System.out.println("\nAre you intending to dine in or opt for takeout?");
         String orderType = scan.nextLine();
-        HashMap<String, Double> foods = orderFood(menu);
+        HashMap<String, Double> foods = chooseFood();
         Order order = new Order(foods, orderType);
         order.setPaid(pay());
         return order;
@@ -77,7 +98,7 @@ public class ServiceMain {
 
     }
 
-    public static HashMap<String, Double> orderFood(Menu menu){
+    public static HashMap<String, Double> chooseFood(){
 
         System.out.println("\nHere is the menu: ");
         System.out.println(menu);
@@ -105,7 +126,7 @@ public class ServiceMain {
             System.out.println("\nPress y to confirm, press n to restart, press e to exit system");
             String confirm = scan.nextLine().toLowerCase();
             if(confirm.equals("y")) return foods;
-            if(confirm.equals("n")) orderFood(menu);
+            if(confirm.equals("n")) chooseFood();
             else if(confirm.equals("e")) System.exit(0);
             else ;
         }
