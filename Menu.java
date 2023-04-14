@@ -15,6 +15,7 @@ public class Menu {
         readFile(fileName);
     }
 
+    // read file and generate menu hashmap in instansvariable
     public void readFile(String fileName){
         Scanner scan = null;
         try{

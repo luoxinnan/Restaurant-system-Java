@@ -5,7 +5,6 @@ public class ServiceMain {
     static final String menuFile = "menu.csv";
     static final String orderLog = "orderLog.csv";
 
-    static boolean exit = false;
     static Scanner scan = new Scanner(System.in);
     static OrderSystem orderSystem = new OrderSystem();
     static RestaurantMonitor monitor = new RestaurantMonitor(orderSystem);
