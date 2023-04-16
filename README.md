@@ -1,6 +1,8 @@
 # Restaurant-system-Java
 This project is a Java-based restaurant simulation system that utilizes object-oriented programming techniques. The program is designed to simulate a real-life restaurant by allowing customers to select food items, place orders, and track the order history.
 
+A branch will be created to update the GUI version at a later time.
+
 
 <h2>Features</h2>
 <ul>
