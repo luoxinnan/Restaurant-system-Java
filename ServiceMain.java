@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class ServiceMain {
-    static final String menuFile = "menu.csv";
-    static final String orderLog = "orderLog.csv";
+    static final String menuFile = "doc/menu.csv";
+    static final String orderLog = "doc/orderLog.csv";
 
     static Scanner scan = new Scanner(System.in);
     static OrderSystem orderSystem = new OrderSystem();
@@ -58,7 +58,7 @@ public class ServiceMain {
             }
 
         }
-        System.out.println("\nThere is no mached number");
+        System.out.println("\nThere is no matched number");
         return;
     }
 

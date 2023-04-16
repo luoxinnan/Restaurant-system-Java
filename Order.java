@@ -21,7 +21,7 @@ class Order{
 
         Scanner scan = null;
         try{
-            scan = new Scanner(new File("orderNumber.txt"));
+            scan = new Scanner(new File("doc/orderNumber.txt"));
         } catch(FileNotFoundException e){
             System.err.println(e);
             System.exit(1);
@@ -33,7 +33,7 @@ class Order{
 
         PrintWriter f = null;
         try{
-            f = new PrintWriter("orderNumber.txt");
+            f = new PrintWriter("doc/orderNumber.txt");
         }catch(FileNotFoundException e){
             System.err.println(e);
             System.exit(1);

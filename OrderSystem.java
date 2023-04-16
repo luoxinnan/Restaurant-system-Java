@@ -29,7 +29,7 @@ public class OrderSystem {
 
         // append to orderLog
         try {
-            Files.write(Paths.get("orderLog.csv"), line.getBytes(), StandardOpenOption.APPEND);
+            Files.write(Paths.get("doc/orderLog.csv"), line.getBytes(), StandardOpenOption.APPEND);
         }catch (IOException e) {
             System.err.println(e);
         }
