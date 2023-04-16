@@ -13,3 +13,15 @@ A branch will be created to update the GUI version at a later time.
 <li>Convenient input handling using Scanner.</li>
 <li>Simple and user-friendly interface for order pickup and order history review.</li>
 </ul>
+
+
+<h2>Diagrams</h2>
+
+
+![alt text](https://github.com/luoxinnan/Restaurant-system-Java/blob/master/doc/Activity-diagram.png)
+
+
+
+![alt text](https://github.com/luoxinnan/Restaurant-system-Java/blob/master/doc/data-structure-diagram.png)
+
+
